@@ -1,0 +1,19 @@
+os: osx
+language: c
+compiler:
+  - clang
+  - gcc
+addons:
+  homebrew:
+    packages:
+    - openssl@1.1
+before_install:
+  - export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+  - export LDFLAGS="$LDFLAGS -L/usr/local/opt/openssl@1.1/lib"
+  - export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
+script:
+  - make clean
+  - make
+  - make clean
+  - export CC="$CC -g"
+  - make debug
