@@ -1,0 +1,1 @@
+int tweets_get(long timeout);
